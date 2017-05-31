@@ -52,7 +52,7 @@
 - quantity (decimal)
 
 
-# Resources
+# REST API
 
 ## Customers
 ```
