@@ -1,8 +1,14 @@
-# Dependencies
+# Main Technologies and libs
 
 - sqlite3
 - node
-- npm
+- redux
+- react
+- react-redux
+- redux-form
+- react-router
+- axios
+
 
 # Getting Started
 
@@ -70,5 +76,3 @@ GET|PUT|DELETE    /api/invoices/{id}
 GET|POST          /api/invoices/{id}/items
 GET|PUT|DELETE    /api/invoices/{invoice_id}/items/{id}
 ```
-
-
