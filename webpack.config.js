@@ -1,7 +1,8 @@
 const path = require("path");
 const webpack = require('webpack');
 const  HtmlWebpackPlugin = require('html-webpack-plugin');
-const VENDORS = ["react","react-dom","react-redux","react-router","react-router-redux","redux"];
+
+const VENDORS = ["react","react-dom","react-redux","react-router","react-router-redux","redux","react-bootstrap-typeahead",""];
 module.exports = {
     entry: {
 
