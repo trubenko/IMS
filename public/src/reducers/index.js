@@ -6,7 +6,7 @@ import prod_details from './products_reducer'
 import cust_details from './customers_reducer'
 import inv_details from './invoices_reducer'
 
-// import fetchItems from './fetch_items'
+
 
 const rootReducer = combineReducers({
     fetched_data,

@@ -1,5 +1,5 @@
 # Main Technologies and libs
-
+- bootstrap
 - sqlite3
 - node
 - redux
@@ -7,6 +7,7 @@
 - react-redux
 - redux-form
 - react-router
+- react-bootstrap-typeahead
 - axios
 
 

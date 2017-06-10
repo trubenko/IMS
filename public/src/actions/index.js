@@ -46,7 +46,8 @@ export function deleteItem({id, invoice_id}) {
 
 // ===============================
 export function createInvoice(options) {
-    let request = axios.post('/api/invoices', options);
+    let request = axios.post('/api/invoices', options)
+        .then(()=> browserHistory.push('/invoices'));
     return {
         type: actionsTypes.CREATE_INVOICE,
         payload: request
@@ -78,7 +79,6 @@ export function updateInvoice(options){
     }
 }
 
-
 export function updateInvoiceItem(invoiceId, customerId){
 
     let request = axios.post(`/api/invoices/${invoiceId}/items`, {
@@ -92,9 +92,22 @@ export function updateInvoiceItem(invoiceId, customerId){
     }
 }
 
+export function deleteInvoice(id) {
+    const url = `/api/invoices/${id}`;
+    let request = axios
+        .delete(url)
+        .then(()=>browserHistory.push('/invoices'))
+
+    return {
+        type: actionsTypes.DELETE_CUSTOMER,
+        payload: request
+    }
+}
+
 // ==============================
 export function createCustomer(options) {
-    let request = axios.post('/api/customers', options);
+    let request = axios.post('/api/customers', options)
+        .then(()=> browserHistory.push('/customers'));
     return {
         type: actionsTypes.CREATE_CUSTOMER,
         payload: request
@@ -119,9 +132,21 @@ export function editCustomer(id) {
     }
 }
 
-export function updateCustomer(id, values) {
+export function deleteCustomer(id) {
+    const url = `/api/customers/${id}`;
+    let request = axios
+        .delete(url)
+        .then(()=>browserHistory.push('/customers'))
 
-    let request = axios.put(`/api/customers/${id}`, values);
+    return {
+        type: actionsTypes.DELETE_CUSTOMER,
+        payload: request
+    }
+}
+
+export function updateCustomer(id, values) {
+    let request = axios.put(`/api/customers/${id}`, values)
+        .then(()=>browserHistory.push(`/customers`))
 
     return {
         type: actionsTypes.UPDATE_CUSTOMER,
@@ -131,6 +156,15 @@ export function updateCustomer(id, values) {
 
 
 // =======================
+export function createProduct(options) {
+    let request = axios.post('/api/products', options)
+        .then(()=>browserHistory.push('/products'));
+    return {
+        type: actionsTypes.CREATE_PRODUCT,
+        payload: request
+    }
+}
+
 export function fetchProducts() {
 
     let request = axios.get('/api/products');
@@ -153,7 +187,9 @@ export function editProduct(id) {
 
 export function updateProduct(id, values) {
 
-    let request = axios.put(`/api/products/${id}`, values);
+    let request = axios
+        .put(`/api/products/${id}`, values)
+        .then(()=>browserHistory.push('/products'));
 
     return {
         type: actionsTypes.UPDATE_PRODUCT,
@@ -161,6 +197,14 @@ export function updateProduct(id, values) {
     }
 }
 
+export function deleteProduct(id) {
+    const url = `/api/products/${id}`;
+    let request = axios
+        .delete(url)
+        .then(()=>browserHistory.push('/products'))
 
-
-// =======================
+    return {
+        type: actionsTypes.DELETE_CUSTOMER,
+        payload: request
+    }
+}

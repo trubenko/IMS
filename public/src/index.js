@@ -7,7 +7,7 @@ import logger from 'redux-logger'
 
 import ReduxPromise from 'redux-promise';
 
-const createStoreWithMIddleware = applyMiddleware(ReduxPromise, logger)(createStore);
+const createStoreWithMIddleware = applyMiddleware(ReduxPromise/*, logger*/)(createStore);
 import { Provider } from 'react-redux';
 
 import reduces from './reducers/index'

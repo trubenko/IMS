@@ -7,6 +7,9 @@ var express = require('express'),
 
 
 
+var webpackMW = require('webpack-dev-middleware'),
+    webpack = require('webpack'),
+    webpackConfig = require('./webpack.config');
 
 sequelize = new Sequelize('sqlite://' + path.join(__dirname, 'invoices.sqlite'), {
   dialect: 'sqlite',
@@ -127,6 +130,7 @@ sequelize.sync().then(function() {
 });
 
 var app = module.exports = express();
+app.use(webpackMW(webpack(webpackConfig)));
 app.set('port', process.env.PORT || 8000);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());

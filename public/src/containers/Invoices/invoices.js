@@ -26,11 +26,16 @@ class Invoices extends Component {
 
 
     render() {
-        if (!this.props.fetched_data.invoices.length || !this.props.fetched_data.customers.length) return <div>
-            Loading</div>;
+        if (!this.props.fetched_data.invoices.length || !this.props.fetched_data.customers.length) {
+            return (
+                <div className="text-center">
+                    <Link to="/invoices/new" className="btn btn-success">Create invoice</Link>
+                </div>)
+        }
 
         let {invoices} = this.props.fetched_data;
         let {customers} = this.props.fetched_data;
+        debugger;
 
         invoices = invoices.map((invoice, inx) => {
 
@@ -53,13 +58,15 @@ class Invoices extends Component {
         });
         return (
             <div>
-                <Link to="/invoices/new"> <span className="pull-right btn btn-danger"> Create invoice</span></Link>
+                <div className="text-center">
+                    <Link to="/invoices/new" className="btn btn-success">Create invoice</Link>
+                </div>
 
                 <table className="table table-hover">
                     <thead>
                     <tr>
                         <th>№</th>
-                        <th>Customer</th>
+                        <th>Customers</th>
                         <th>Discount</th>
                         <th>Total</th>
                     </tr>

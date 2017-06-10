@@ -22,7 +22,7 @@ class CustomerDetails extends Component {
         const {createCustomer} = this.props;
         createCustomer(this.state);
 
-        browserHistory.push('/customers')
+
     }
 
     render() {

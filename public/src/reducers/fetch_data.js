@@ -6,9 +6,10 @@ import {
 } from '../actions/types'
 
 const INITIAL_STATE = {
-        customers: [],
-        products: [],
-        invoices: []
+    customers: [],
+    products: [],
+    invoices: [],
+    items: []
 };
 
 

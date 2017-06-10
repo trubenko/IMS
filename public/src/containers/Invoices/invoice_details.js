@@ -10,10 +10,8 @@ import {
     updateItem,
     deleteItem
 } from '../../actions/index';
-import {Field, reduxForm, change} from 'redux-form';
-import {browserHistory} from 'react-router'
-import {Link} from 'react-router';
 
+import {reduxForm} from 'redux-form';
 import {Typeahead} from 'react-bootstrap-typeahead';
 
 
@@ -44,6 +42,8 @@ class InvoiceDetails extends Component {
             customer_id: customerId,
         };
         this.props.updateInvoice(options);
+
+        $("#customer_name").html(customer[0].name);
         this.calcTotal();
 
     }
@@ -63,7 +63,6 @@ class InvoiceDetails extends Component {
     }
 
     onClickProduct(e) {
-        console.log(e.target);
 
         let $elem = $(e.target);
 
@@ -97,7 +96,7 @@ class InvoiceDetails extends Component {
             let prodId = $elem.parents('table').prop('del');
             this.props.deleteItem({invoice_id: this.props.params.id , id:prodId});
 
-            $elem.parents('tr').remove();
+            $(`#${prodId}`).remove();
 
             let total = this.calcTotal();
             this.props.updateInvoice({discount: $('#discount').val(), total: total, id: this.props.params.id});
@@ -124,7 +123,7 @@ class InvoiceDetails extends Component {
         let total = amount - (amount * discount / 100);
         $('#total').val(total.toFixed(2));
 
-        return amount.toFixed(2);
+        return total.toFixed(2);
 
     }
 
@@ -135,8 +134,10 @@ class InvoiceDetails extends Component {
     }
 
     onClickDelete(e) {
+        debugger;
         let $elem = $(e.target);
-        $elem.parents('table').prop('del', $elem.parents('tr').prop('id'))
+        $elem.parents('table').prop('del', $elem.parents('tr').prop('id'));
+        this.renderProducts();
 
     }
     componentDidUpdate(){
@@ -170,10 +171,10 @@ class InvoiceDetails extends Component {
                     </td>
                     <td className="price" data-price={price}>{(price * quantity).toFixed(2)}</td>
                     <td className="text-right">
-                        {/*<div className="btn btn-success edit" onClick={(e)=>{browserHistory.push(`/api/products/${$(e.target).parents('tr').data('product-id')}`)}}>Edit</div>*/}
                         <div className="btn btn-danger" data-toggle="modal" data-target="#myModal"
                              onClick={this.onClickDelete.bind(this)}>Delete
                         </div>
+
                         <div className="modal fade" id="myModal" tabIndex="-1" role="dialog" aria-labelledby={id}>
                             <div className="modal-dialog" role="document">
                                 <div className="modal-content">

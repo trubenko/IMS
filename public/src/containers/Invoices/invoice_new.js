@@ -9,7 +9,7 @@ import {Link, browserHistory} from 'react-router';
 import {Typeahead} from 'react-bootstrap-typeahead';
 
 
-class InvoiceDetails extends Component {
+class InvoiceNew extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -27,10 +27,8 @@ class InvoiceDetails extends Component {
 
 
     }
-
     onClickSave(e){
          this.props.createInvoice(this.state);
-         browserHistory.push('/invoices');
     }
 
     componentDidUpdate(){
@@ -85,4 +83,4 @@ function mapStateToProps(state) {
     }
 }
 
-export default connect(mapStateToProps, {fetchCustomers, createInvoice})(InvoiceDetails);
+export default connect(mapStateToProps, {fetchCustomers, createInvoice})(InvoiceNew);
