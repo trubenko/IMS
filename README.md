@@ -1,4 +1,5 @@
 # Main Technologies and libs
+- JQuery
 - bootstrap
 - sqlite3
 - node
