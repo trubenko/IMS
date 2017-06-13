@@ -25,19 +25,15 @@ module.exports = {
                 loader: 'babel-loader',
                 exclude: path.join(__dirname, 'node_modules'),
                 test: /\.js$/
-            },
-            /*  {
-             loader: ExtractTextPlugin.extract({loader: 'css-loader'}),
-             test: /\.css$/
-             }*/
+            }
         ]
     },
     plugins: [
-        // new ExtractTextPlugin('style.css'), // Combine all css in one "style.css"
-        new webpack.optimize.CommonsChunkPlugin({ // Divide all mutable and immutable
+
+        new webpack.optimize.CommonsChunkPlugin({
             name: ['vendor', 'manifest']
         }),
-        new HtmlWebpackPlugin({ // Embed bundle.js in proposed .html files
+        new HtmlWebpackPlugin({
             template: './public/index.html',
 
         })
