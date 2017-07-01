@@ -1,8 +1,8 @@
 const path = require("path");
 const webpack = require('webpack');
-const  HtmlWebpackPlugin = require('html-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-const VENDORS = ["react","react-dom","react-redux","react-router","react-router-redux","redux","react-bootstrap-typeahead",""];
+const VENDORS = ["react", "react-dom", "react-redux", "react-router", "react-router-redux", "redux", "react-bootstrap-typeahead"];
 module.exports = {
     entry: {
 
@@ -28,6 +28,9 @@ module.exports = {
             }
         ]
     },
+    resolve: {
+        extensions: [ '.js', '.jsx']
+    },
     plugins: [
 
         new webpack.optimize.CommonsChunkPlugin({
@@ -39,7 +42,7 @@ module.exports = {
         })
     ],
     watch: true,
-    watchOptions:{
+    watchOptions: {
         ignored: /node_modules/
     }
 }

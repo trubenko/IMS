@@ -1,3 +1,9 @@
+# IMS
+
+Helps to  create, add, edit and delete shop products , customers and make a discount on list of all items
+
+https://youtu.be/FQ55FIXiTrw
+
 # Main Technologies and libs
 - JQuery
 - bootstrap
